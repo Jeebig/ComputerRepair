@@ -1,0 +1,70 @@
+/* Space for fixed-top navbar */
+body { padding-top: 4.5rem; }
+
+/* Hero section with background image and stronger overlay */
+.hero {
+  position: relative;
+  color: #fff;
+  /* Fallback if image fails */
+  background-color: #0b1320;
+}
+.hero .hero-bg {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+  /* Blend with dark color to avoid light patches */
+  background-color: #0b1320;
+  background-blend-mode: multiply;
+  /* Darken image for better contrast */
+  filter: brightness(.45) saturate(1.05) contrast(1.05);
+}
+.hero .hero-overlay {
+  position: absolute; inset: 0;
+  /* Stronger dark overlay + subtle vignette */
+  background:
+    radial-gradient(120% 100% at 30% 10%, rgba(0,0,0,.65) 0%, rgba(0,0,0,0) 60%),
+    linear-gradient(180deg, rgba(0,0,0,.66) 0%, rgba(0,0,0,.86) 100%);
+}
+.hero .container { position: relative; z-index: 1; }
+
+/* Soft shadow on text */
+.hero h1,
+.hero .lead {
+  text-shadow: 0 2px 10px rgba(0,0,0,.8), 0 0 1px rgba(0,0,0,.6);
+}
+
+/* Semi‑transparent panel behind hero text block */
+.hero .row > [class*="col-"] {
+  background: rgba(0,0,0,.44);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 12px;
+  padding: 16px 18px;
+  backdrop-filter: blur(2px);
+  /* Keep panel inline with content, not full width */
+  display: inline-block;
+}
+
+/* Heights for hero sections */
+.min-vh-60 { min-height: 60vh; }
+.min-vh-40 { min-height: 40vh; }
+.hero--sm .min-vh-40 { min-height: 40vh; }
+
+/* Card tweaks */
+.card .badge { font-weight: 500; }
+
+/* Footer links */
+footer a { text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+/* On mobile make overlay slightly darker to ensure readability */
+@media (max-width: 767.98px) {
+  .hero .hero-bg { filter: brightness(.42) saturate(1.05) contrast(1.05); }
+  .hero .hero-overlay {
+    background:
+      radial-gradient(120% 100% at 30% 10%, rgba(0,0,0,.7) 0%, rgba(0,0,0,0) 60%),
+      linear-gradient(180deg, rgba(0,0,0,.7) 0%, rgba(0,0,0,.9) 100%);
+  }
+  .hero .row > [class*="col-"] {
+    background: rgba(0,0,0,.5);
+  }
+}
